@@ -3,12 +3,12 @@ os: windows
 files:
   - source: /student-service/student-service-app/target/student-service-app-1.0.0-SNAPSHOT.jar
     destination: /vectra-jar/
-hooks:
+# hooks:
 #   AfterInstall:
 #    - location: setup.sh
 #      timeout: 300
 #      runas: root
-  ApplicationStart:
-   - location: run.bat
-     timeout: 300
-     runas: root
+#   ApplicationStart:
+#    - location: run.bat
+#      timeout: 300
+#      runas: root
