@@ -25,7 +25,13 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: my-artifact
-          path: ${{github.workspace}}/student-service/student-service-app/target/student-service-app-1.0.0-SNAPSHOT.jar          
+          path: ${{github.workspace}}/student-service/student-service-app/target/student-service-app-1.0.0-SNAPSHOT.jar  
+      - uses: actions/checkout@main          
+      - name: copy file
+        uses: canastro/copy-file-action@main
+        with:
+          source: "${{github.workspace}}/student-service/student-service-app/target/student-service-app-1.0.0-SNAPSHOT.jar"
+          target: "/student-service"          
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
