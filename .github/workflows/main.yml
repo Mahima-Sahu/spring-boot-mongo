@@ -27,7 +27,7 @@ jobs:
           name: my-artifact
           path: ${{github.workspace}}/student-service/student-service-app/target/student-service-app-1.0.0-SNAPSHOT.jar           
       - name: copy file
-        uses: canastro/copy-file-action@v2
+        uses: canastro/copy-file-action@master
         with:
           source: "${{github.workspace}}/student-service/student-service-app/target/student-service-app-1.0.0-SNAPSHOT.jar"
           target: "/student-service"          
