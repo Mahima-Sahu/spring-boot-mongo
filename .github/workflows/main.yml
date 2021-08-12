@@ -22,6 +22,10 @@ jobs:
           touch ${{github.workspace}}/myjar.jar
           cp ${{github.workspace}}/student-service/student-service-app/target/student-service-app-1.0.0-SNAPSHOT.jar ${{github.workspace}}/myjar
           ls ${{github.workspace}}
+      - uses: actions/upload-artifact@v2
+        with:
+          name: my-artifact
+          path: ${{github.workspace}}/student-service/student-service-app/target/student-service-app-1.0.0-SNAPSHOT.jar          
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
