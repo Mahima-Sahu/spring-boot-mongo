@@ -1,7 +1,7 @@
 version: 0.0
 os: windows
 files:
-  - source: C:/ProgramData/Amazon/CodeDeploy/f9840a22-3c3a-4922-be06-51c829331856/d-SQK106RJC/deployment-archive/student-service/student-service-app/target/student-service-app-1.0.0-SNAPSHOT.jar
+  - source: /student-service/student-service-app/target/student-service-app-1.0.0-SNAPSHOT.jar
     destination: /vectra-jar/
 hooks:
 #   AfterInstall:
