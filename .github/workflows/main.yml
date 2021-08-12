@@ -19,9 +19,10 @@ jobs:
       - name: Build Application and Run unit Test
         run: |
           mvn -B package --file student-service/pom.xml
-          touch ${{github.workspace}}/myjar.jar
-          cp ${{github.workspace}}/student-service/student-service-app/target/student-service-app-1.0.0-SNAPSHOT.jar ${{github.workspace}}/myjar
-          ls ${{github.workspace}}
+        #touch ${{github.workspace}}/myjar.jar
+        #cp ${{github.workspace}}/student-service/student-service-app/target/student-service-app-1.0.0-SNAPSHOT.jar ${{github.workspace}}/myjar
+          
+        #ls ${{github.workspace}}
 #       - uses: actions/upload-artifact@v2
 #         with:
 #           name: my-artifact
