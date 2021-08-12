@@ -26,9 +26,9 @@ jobs:
         with:
           name: my-artifact
           path: ${{github.workspace}}/student-service/student-service-app/target/student-service-app-1.0.0-SNAPSHOT.jar  
-      - uses: actions/checkout@main          
+      - uses: actions/checkout@v2          
       - name: copy file
-        uses: canastro/copy-file-action@main
+        uses: canastro/copy-file-action@v2
         with:
           source: "${{github.workspace}}/student-service/student-service-app/target/student-service-app-1.0.0-SNAPSHOT.jar"
           target: "/student-service"          
