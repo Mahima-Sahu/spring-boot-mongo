@@ -1,8 +1,8 @@
 version: 0.0
 os: windows
-# files:
-#   - source: /student-service/student-service-app/target/student-service-app-1.0.0-SNAPSHOT.jar
-#     destination: /myjar/
+files:
+  - source: ./
+    destination: /myjar/
 hooks:
 #   AfterInstall:
 #    - location: setup.sh
