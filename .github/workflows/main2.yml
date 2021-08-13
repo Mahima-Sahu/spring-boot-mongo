@@ -1,6 +1,6 @@
 name: CI/CD Pipeline2
 on:
-  push:
+  push: 
     branches: [ main ] 
 # on:
 #   workflow_dispatch:
