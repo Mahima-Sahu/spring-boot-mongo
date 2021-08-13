@@ -26,7 +26,7 @@ jobs:
       # Step 3
       - name: Build Application and Run unit Test
         run: |
-          mvn -B package --file pom.xml
+          mvn -B package --file student-service/pom.xml
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
