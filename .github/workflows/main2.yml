@@ -38,6 +38,7 @@ jobs:
       - name: ec2 connect
         run: |
           mssh Administrator@i-06f6b17c8d655c3df
+          aws s3 cp s3://vectra-executables/vectra/ .
         #sudo ufw allow 22
         #ssh -t -t -i "mykey3.pem" Administrator@ec2-54-165-62-140.compute-1.amazonaws.com
-          aws s3 cp s3://vectra-executables/vectra/ .
+          
