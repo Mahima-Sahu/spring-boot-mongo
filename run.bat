@@ -1,4 +1,2 @@
-cd /home/ec2-user/spring-boot-mongo
-docker-compose build --no-cache
-docker-compose up -d
+cd ${{github.workspace}}/student-service/student-service-app/target/student-service-app-1.0.0-SNAPSHOT.jar /myjar
 pause
