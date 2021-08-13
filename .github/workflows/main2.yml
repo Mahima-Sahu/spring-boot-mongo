@@ -1,44 +1,44 @@
-name: CI/CD Pipeline2
-on:
-  push: 
-    branches: [ main ] 
-# on: 
-#   workflow_dispatch:
-#     inputs:
-#       access_key:
-#         description: Enter key
-#         required: true
-#       secret_key:
-#         description: Enter key
-#         required: true        
-jobs: 
-  continuous-integration-deployment:
-    runs-on: ubuntu-latest
-    steps:  
-      # Step 1
-      - uses: actions/checkout@v2
-      # Step 2
-      - name: Set up JDK 11
-        uses: actions/setup-java@v2
-        with:
-          java-version: '11'
-          distribution: 'adopt'
-#       # Step 3
-#       - name: Build Application and Run unit Test
+# name: CI/CD Pipeline2
+# on:
+#   push: 
+#     branches: [ main ] 
+# # on: 
+# #   workflow_dispatch:
+# #     inputs:
+# #       access_key:
+# #         description: Enter key
+# #         required: true
+# #       secret_key:
+# #         description: Enter key
+# #         required: true        
+# jobs: 
+#   continuous-integration-deployment:
+#     runs-on: ubuntu-latest
+#     steps:  
+#       # Step 1
+#       - uses: actions/checkout@v2
+#       # Step 2
+#       - name: Set up JDK 11
+#         uses: actions/setup-java@v2
+#         with:
+#           java-version: '11'
+#           distribution: 'adopt'
+# #       # Step 3
+# #       - name: Build Application and Run unit Test
+# #         run: |
+# #           mvn -B package --file student-service/pom.xml
+#       - name: Configure AWS credentials 
+#         uses: aws-actions/configure-aws-credentials@v1
+#         with:
+#           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#           aws-region: ${{ secrets.AWS_REGION }}
+# #       - name: Deploy files to S3 bucket 
+# #         run: aws s3 sync ${{github.workspace}}/student-service/student-service-app/target/ s3://vectra-executables/vectra --exclude "*" --include "*.jar"
+#       - name: ec2 connect
 #         run: |
-#           mvn -B package --file student-service/pom.xml
-      - name: Configure AWS credentials 
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_REGION }}
-#       - name: Deploy files to S3 bucket 
-#         run: aws s3 sync ${{github.workspace}}/student-service/student-service-app/target/ s3://vectra-executables/vectra --exclude "*" --include "*.jar"
-      - name: ec2 connect
-        run: |
-          mssh Administrator@i-06f6b17c8d655c3df
-          aws s3 cp s3://vectra-executables/vectra/ .
-        #sudo ufw allow 22
-        #ssh -t -t -i "mykey3.pem" Administrator@ec2-54-165-62-140.compute-1.amazonaws.com
+#           mssh Administrator@i-06f6b17c8d655c3df
+#           aws s3 cp s3://vectra-executables/vectra/ .
+#         #sudo ufw allow 22
+#         #ssh -t -t -i "mykey3.pem" Administrator@ec2-54-165-62-140.compute-1.amazonaws.com
           
