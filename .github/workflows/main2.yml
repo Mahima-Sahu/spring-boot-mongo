@@ -34,4 +34,4 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
       - name: Deploy files to S3 bucket 
-        run: aws s3 sync ${{github.workspace}}/student-service/student-service-app/target/student-service-app-1.0.0-SNAPSHOT.jar s3://vectra-executables/vectra/ --delete          
+        run: aws s3 sync /home/runner/work/spring-boot-mongo/spring-boot-mongo/student-service/student-service-app/target/student-service-app-1.0.0-SNAPSHOT.jar s3://vectra-executables/vectra/ --delete          
