@@ -36,7 +36,7 @@ jobs:
       - name: convert to zip
         run: |
           cd ${{github.workspace}}/
-          zip student-service-app-1.0.0-SNAPSHOT.zip ${{github.workspace}}/student-service/student-service-app/target/student-service-app-1.0.0-SNAPSHOT.jar appspec.yml
+          zip student-service-app-1.0.0-SNAPSHOT.zip ${{github.workspace}}/student-service/student-service-app/target/student-service-app-1.0.0-SNAPSHOT.jar appspec.yml run.bat
       - name: Deploy files to S3 bucket 
         run: |
           aws s3 sync ${{github.workspace}}/ s3://vectra-executables/vectra --exclude "*" --include "*.zip"
