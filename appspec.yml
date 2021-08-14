@@ -1,8 +1,8 @@
 version: 0.0
 os: windows
-# files:
-#   - source: /student-service/student-service-app/target/student-service-app-1.0.0-SNAPSHOT.jar
-#     destination: /vectra-jar/
+files:
+  - source: /home/runner/work/spring-boot-mongo/spring-boot-mongo/student-service/student-service-app/target/student-service-app-1.0.0-SNAPSHOT.jar
+    destination: /vectra-jar/
 # hooks:
 #   BeforeInstall:
 #     - location: run.bat
