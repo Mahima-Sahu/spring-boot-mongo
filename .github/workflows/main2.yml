@@ -24,21 +24,22 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
       # Step 3
-#       - name: Build Application and Run unit Test
-#         run: |
-#           mvn -B package --file student-service/pom.xml
+      - name: Build Application and Run unit Test
+        run: |
+          mvn -B package --file student-service/pom.xml
       - name: Configure AWS credentials 
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
-#       - name: convert to zip
-#          cd ${{github.workspace}}/
-#           zip student-service-app-1.0.0-SNAPSHOT.zip ${{github.workspace}}/student-service/student-service-app/target/student-service-app-1.0.0-SNAPSHOT.jar
-#       - name: Deploy files to S3 bucket 
-#         run: |
-#           aws s3 sync ${{github.workspace}}/ s3://vectra-executables/vectra --exclude "*" --include "*.zip"
+      - name: convert to zip
+        run: |
+          cd ${{github.workspace}}/
+          zip student-service-app-1.0.0-SNAPSHOT.zip ${{github.workspace}}/student-service/student-service-app/target/student-service-app-1.0.0-SNAPSHOT.jar appsec.yml
+      - name: Deploy files to S3 bucket 
+        run: |
+          aws s3 sync ${{github.workspace}}/ s3://vectra-executables/vectra --exclude "*" --include "*.zip"
 #       - name: AWS SSM Send-Command
 #         uses: peterkimzz/aws-ssm-send-command@master
 #         id: ssm
@@ -51,11 +52,11 @@ jobs:
 #           working-directory: /
 #           command: aws s3 cp s3://vectra-executables/vectra/ /vectra-jar
 #           comment: Hello world!
-      - name: ec2 connect
-        run: |
-         sudo ufw allow 22
-         sudo apt-get install sshpass
-         sshpass -p ";p@Vb3&CxRUTml(sAH7aRPVhE3WEfdl*" ssh -t -t Administrator@ec2-54-165-62-140.compute-1.amazonaws.com
+#       - name: ec2 connect
+#         run: |
+#          sudo ufw allow 22
+#          sudo apt-get install sshpass
+#          sshpass -p ";p@Vb3&CxRUTml(sAH7aRPVhE3WEfdl*" ssh -t -t Administrator@ec2-54-165-62-140.compute-1.amazonaws.com
        #ssh -t -t -i "mykey3.pem" Administrator@ec2-54-165-62-140.compute-1.amazonaws.com
        # mssh Administrator@i-06f6b17c8d655c3df
         #aws s3 cp s3://vectra-executables/vectra/ .
