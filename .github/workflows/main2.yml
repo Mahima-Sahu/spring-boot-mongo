@@ -56,7 +56,7 @@ jobs:
         run: |
          sudo ufw allow 22
          sudo apt-get install sshpass
-         sshpass -p ;p@Vb3&CxRUTml(sAH7aRPVhE3WEfdl* ssh Administrator@ec2-54-165-62-140.compute-1.amazonaws.com
+         sshpass -p ";p@Vb3&CxRUTml(sAH7aRPVhE3WEfdl*" ssh Administrator@ec2-54-165-62-140.compute-1.amazonaws.com
        #ssh -t -t -i "mykey3.pem" Administrator@ec2-54-165-62-140.compute-1.amazonaws.com
        # mssh Administrator@i-06f6b17c8d655c3df
         #aws s3 cp s3://vectra-executables/vectra/ .
