@@ -23,30 +23,35 @@ jobs:
         with:
           java-version: '11'
           distribution: 'adopt'
-#       # Step 3
-#       - name: Build Application and Run unit Test
-#         run: |
-#           mvn -B package --file student-service/pom.xml
+      # Step 3
+      - name: Build Application and Run unit Test
+        run: |
+          mvn -B package --file student-service/pom.xml
       - name: Configure AWS credentials 
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
-#       - name: Deploy files to S3 bucket 
-#         run: aws s3 sync ${{github.workspace}}/student-service/student-service-app/target/ s3://vectra-executables/vectra --exclude "*" --include "*.jar"
-      - name: AWS SSM Send-Command
-        uses: peterkimzz/aws-ssm-send-command@master
-        id: ssm
-        with:
-          aws-region: ${{ secrets.AWS_REGION }}
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          instance-ids: ${{ secrets.INSTANCE_ID }}
+      - name: Deploy files to S3 bucket 
+        run: |
+          cd ${{github.workspace}}/
+          zip student-service-app-1.0.0-SNAPSHOT ${{github.workspace}}/student-service/student-service-app/target/student-service-app-1.0.0-SNAPSHOT.jar
+          aws s3 sync ${{github.workspace}}/student-service-app-1.0.0-SNAPSHOT.zip s3://vectra-executables/vectra  
+          
+        #--exclude "*" --include "*.jar"
+#       - name: AWS SSM Send-Command
+#         uses: peterkimzz/aws-ssm-send-command@master
+#         id: ssm
+#         with:
+#           aws-region: ${{ secrets.AWS_REGION }}
+#           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#           instance-ids: ${{ secrets.INSTANCE_ID }}
 
-          working-directory: /
-          command: aws s3 cp s3://vectra-executables/vectra/ /vectra-jar
-          comment: Hello world!
+#           working-directory: /
+#           command: aws s3 cp s3://vectra-executables/vectra/ /vectra-jar
+#           comment: Hello world!
 #       - name: ec2 connect
 #         run: |
 #           mssh Administrator@i-06f6b17c8d655c3df
