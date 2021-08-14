@@ -2,7 +2,7 @@ name: CI/CD Pipeline2
 on:
   push: 
     branches: [ main ] 
-# on: 
+# on:  
 #   workflow_dispatch:
 #     inputs:
 #       access_key:
