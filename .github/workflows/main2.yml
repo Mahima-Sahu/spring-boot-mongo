@@ -37,9 +37,7 @@ jobs:
         run: |
           cd ${{github.workspace}}/
           zip student-service-app-1.0.0-SNAPSHOT ${{github.workspace}}/student-service/student-service-app/target/student-service-app-1.0.0-SNAPSHOT.jar
-          aws s3 sync ${{github.workspace}}/student-service-app-1.0.0-SNAPSHOT.zip s3://vectra-executables/vectra  
-          
-        #--exclude "*" --include "*.jar"
+          aws s3 sync ${{github.workspace}}/ s3://vectra-executables/vectra --exclude "*" --include "*.zip"
 #       - name: AWS SSM Send-Command
 #         uses: peterkimzz/aws-ssm-send-command@master
 #         id: ssm
