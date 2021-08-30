@@ -1,16 +1,16 @@
 name: CI/CD Pipeline2
-on:
-  push: 
-    branches: [ main ] 
-# on:  
-#   workflow_dispatch:
-#     inputs:
-#       access_key:
-#         description: Enter key
-#         required: true
-#       secret_key:
-#         description: Enter key
-#         required: true        
+# on:
+#   push: 
+#     branches: [ main ] 
+on:  
+  workflow_dispatch:
+    inputs:
+      access_key:
+        description: Enter key
+        required: true
+      secret_key:
+        description: Enter key
+        required: true        
 jobs: 
   continuous-integration-deployment:
     runs-on: ubuntu-latest
