@@ -4,13 +4,13 @@ name: CI/CD Pipeline2
 #     branches: [ main ] 
 on:  
   workflow_dispatch:
-    inputs:
-      access_key:
-        description: Enter key
-        required: true
-      secret_key:
-        description: Enter key
-        required: true        
+#     inputs:
+#       access_key:
+#         description: Enter key
+#         required: true
+#       secret_key:
+#         description: Enter key
+#         required: true        
 jobs: 
   continuous-integration-deployment:
     runs-on: ubuntu-latest
@@ -31,17 +31,18 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-region: ${{ secrets.AWS_REGION }}
-          role-to-assume: githubrole_s3
-          role-external-id: clouds
-          role-duration-seconds: 1200
-          role-session-name: MySession
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}          
+#           role-to-assume: githubrole_s3
+#           role-external-id: clouds
+#           role-duration-seconds: 1200
+#           role-session-name: MySession
+
           
       - name: convert to zip
         run: |
           cd ${{github.workspace}}/
-          zip student-service-app-1.0.0-SNAPSHOT.zip ${{github.workspace}}/student-service/student-service-app/target/student-service-app-1.0.0-SNAPSHOT.jar appspec.yml run.bat
+          zip student-service-app-1.0.0-SNAPSHOT.zip ${{github.workspace}}/student-service/student-service-app/target/student-service-app-1.0.0-SNAPSHOT.jar appspec.yml wait.bat
       - name: Deploy files to S3 bucket 
         run: |
           aws s3 sync ${{github.workspace}}/ s3://vectra-executables/vectra --exclude "*" --include "*.zip"
